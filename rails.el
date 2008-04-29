@@ -195,10 +195,12 @@ Emacs w3m browser."
   (or (null window-system) rails-always-use-text-menus))
 
 ;;;;;;;; hack ;;;;
-(defun rails-svn-status-into-root ()
+(defvar rails-vc:command 'git-status)
+
+(defun rails-vc:status-into-root ()
   (interactive)
   (rails-project:with-root (root)
-                           (svn-status root)))
+                           (funcall rails-vc:command root)))
 
 ;; helper functions/macros
 (defun rails-search-doc (&optional item)
